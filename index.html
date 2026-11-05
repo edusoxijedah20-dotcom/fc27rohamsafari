@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC 27 رایگان برای ویندوز</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #050505;
+    color: #00ff41;
+    font-family: Consolas, monospace;
+}
+
+body.running {
+    overflow: hidden;
+}
+
+#startScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+#startScreen h1 {
+    color: white;
+    font-size: 35px;
+    text-shadow: 0 0 15px #00ff41;
+}
+
+#startScreen p {
+    color: #aaa;
+    font-size: 18px;
+}
+
+button {
+    background: #00ff41;
+    color: black;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#hackerScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+    flex-direction: column;
+    padding: 0 10px;
+    background: #050505;
+}
+
+.header {
+    flex: 0 0 auto;
+    background: #050505;
+    color: #00ff41;
+    border-bottom: 1px solid #00ff41;
+    padding: 12px;
+    text-align: center;
+    font-size: 21px;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.progress-area {
+    flex: 0 0 auto;
+    background: #050505;
+    padding: 10px 5px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 13px;
+    border: 1px solid #00ff41;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #00ff41;
+    box-shadow: 0 0 12px #00ff41;
+}
+
+#progressText {
+    text-align: center;
+    margin-top: 5px;
+    color: #00ff41;
+    font-size: 15px;
+}
+
+#terminal {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    direction: ltr;
+    text-align: left;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    overscroll-behavior: contain;
+}
+
+.line {
+    margin: 2px 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.green {
+    color: #00ff41;
+}
+
+.white {
+    color: white;
+}
+
+.yellow {
+    color: #ffff00;
+}
+
+.final-alert {
+    color: #ff1717;
+    font-weight: bold;
+    text-shadow: 0 0 12px red;
+    font-size: 22px;
+    text-align: center;
+    margin: 18px 0;
+    animation: alertBlink 0.25s infinite alternate;
+}
+
+@keyframes alertBlink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+.chaos-text {
+    color: #ff3333;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.info-box {
+    direction: ltr;
+    width: 100%;
+    margin: 22px 0;
+    border: 1px solid #00ff41;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,255,65,0.2);
+    background: rgba(0,255,65,0.04);
+}
+
+.info-title {
+    background: rgba(0,255,65,0.12);
+    color: white;
+    text-align: center;
+    padding: 13px 5px;
+    font-size: 17px;
+    font-weight: bold;
+    border-bottom: 1px solid #00ff41;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    direction: ltr;
+}
+
+.info-table td {
+    border-bottom: 1px solid rgba(0,255,65,0.2);
+    padding: 9px 7px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    vertical-align: top;
+}
+
+.info-table td:first-child {
+    width: 34%;
+    color: #00ff41;
+    font-weight: bold;
+}
+
+.info-table td:last-child {
+    color: #ffff00;
+}
+
+.info-table tr:last-child td {
+    border-bottom: none;
+}
+
+.info-note {
+    color: #ff4444;
+    text-align: center;
+    font-size: 11px;
+    padding: 10px;
+    border-top: 1px solid rgba(0,255,65,0.3);
+}
+
+.disclaimer {
+    color: #00ff41;
+    text-align: center;
+    font-size: 18px;
+    margin: 25px 0;
+    line-height: 2;
+}
+
+.final-image {
+    display: block;
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    margin: 25px auto;
+    border: 2px solid #00ff41;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ff41;
+}
+</style>
+</head>
+
+<body>
+
+<div id="startScreen">
+    <h1>FC 27 FREE DOWNLOAD</h1>
+    <p>برای دریافت FC27 رایگان روی دکمه زیر کلیک کنید</p>
+    <button onclick="startHack()">رایگان برای ویندوزFC27</button>
+</div>
+
+<div id="hackerScreen">
+
+    <div class="header">
+        FATA HACK TERMINAL
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-container">
+            <div id="progress"></div>
+        </div>
+        <div id="progressText">0%</div>
+    </div>
+
+    <div id="terminal"></div>
+
+</div>
+
+<script>
+const terminal = document.getElementById("terminal");
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function scrollBottom() {
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+function addLine(text, color = "green") {
+    const line = document.createElement("div");
+    line.className = "line " + color;
+    line.textContent = text;
+    terminal.appendChild(line);
+    scrollBottom();
+}
+
+function randomHex(length = 16) {
+    return Array.from(
+        { length },
+        () => Math.floor(Math.random() * 16).toString(16)
+    ).join("").toUpperCase();
+}
+
+function getDeviceInfo() {
+    const ua = navigator.userAgent;
+
+    let os = "Unknown OS";
+    let browser = "Unknown Browser";
+
+    if (ua.includes("Android")) os = "Android";
+    else if (ua.includes("iPhone")) os = "iOS";
+    else if (ua.includes("Windows")) os = "Windows";
+    else if (ua.includes("Mac")) os = "macOS";
+    else if (ua.includes("Linux")) os = "Linux";
+
+    if (ua.includes("Edg")) browser = "Microsoft Edge";
+    else if (ua.includes("Chrome")) browser = "Chrome";
+    else if (ua.includes("Firefox")) browser = "Firefox";
+    else if (ua.includes("Safari")) browser = "Safari";
+
+    return { os, browser };
+}
+
+async function startHack() {
+    document.body.classList.add("running");
+
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("hackerScreen").style.display = "flex";
+
+    const device = getDeviceInfo();
+
+    addLine("Microsoft Windows [Version 10.0.19045]", "white");
+    addLine("(c) Microsoft Corporation. All rights reserved.", "white");
+
+    await sleep(400);
+
+    addLine("");
+    addLine("C:\\SYSTEM> initializing system...");
+    await sleep(300);
+
+    addLine("[+] Loading security modules...");
+    await sleep(250);
+
+    addLine("[+] Connecting to remote terminal...");
+    await sleep(300);
+
+    addLine("[+] Connection initialized");
+    await sleep(300);
+
+    addLine("");
+    addLine("C:\\SYSTEM> dir /s");
+    await sleep(250);
+
+    const folders = [
+        "C:\\Users\\Administrator\\Desktop",
+        "C:\\Users\\Administrator\\Documents",
+        "C:\\Windows\\System32",
+        "C:\\ProgramData\\Microsoft",
+        "C:\\System\\Config",
+        "C:\\Network\\Cache",
+        "C:\\Users\\Public\\Downloads"
+    ];
+
+    const files = [
+        "system_config.dat",
+        "IMG_20261021.jpg",
+        "IMG_20261022.jpg",
+        "database_backup.bin",
+        "security_key.dll",
+        "user_profile.dat",
+        "network_settings.ini",
+        "access_token.tmp",
+        "system_log.txt",
+        "cache_data.bin",
+        "config_backup.dat",
+        "unknown_process.exe"
+    ];
+
+    for (let folder of folders) {
+        addLine(" Directory of " + folder, "white");
+        await sleep(90);
+
+        for (let i = 0; i < 5; i++) {
+            const file = files[Math.floor(Math.random() * files.length)];
+            addLine("  " + file + "    " + randomHex(8));
+            await sleep(35);
+        }
+    }
+
+    addLine("");
+    addLine("C:\\SYSTEM> scan --deep --verbose");
+    await sleep(300);
+
+    const scanMessages = [
+        "Analyzing system architecture...",
+        "Checking memory allocation...",
+        "Inspecting device configuration...",
+        "Analyzing browser environment...",
+        "Checking active processes...",
+        "Scanning temporary directories...",
+        "Inspecting network configuration...",
+        "Analyzing system response...",
+        "Checking available storage...",
+        "Processing device information..."
+    ];
+
+    for (let message of scanMessages) {
+        addLine("[SCAN] " + message);
+        await sleep(250);
+    }
+
+    addLine("");
+    addLine("C:\\SYSTEM> analyze --device");
+    await sleep(300);
+
+    addLine("[+] Operating System: " + device.os);
+    addLine("[+] Browser: " + device.browser);
+    addLine("[+] Screen: " + screen.width + "x" + screen.height);
+    addLine("[+] CPU Threads: " + (navigator.hardwareConcurrency || "Unknown"));
+    addLine("[+] Language: " + navigator.language);
+    addLine("[+] Touch Points: " + navigator.maxTouchPoints);
+
+    await sleep(300);
+
+    addLine("");
+    addLine("C:\\SYSTEM> process --memory");
+    await sleep(200);
+
+    for (let i = 0; i < 15; i++) {
+        addLine(
+            "[PROCESS] PID:" +
+            Math.floor(Math.random() * 9000 + 1000) +
+            " MEMORY:" +
+            Math.floor(Math.random() * 900) +
+            "MB STATUS: RUNNING"
+        );
+
+        await sleep(80);
+    }
+
+    addLine("");
+    addLine("C:\\SYSTEM> transfer --simulate");
+    await sleep(200);
+
+    const progress = document.getElementById("progress");
+    const progressText = document.getElementById("progressText");
+
+    for (let i = 0; i <= 100; i++) {
+        progress.style.width = i + "%";
+        progressText.textContent = i + "%";
+
+        if (i % 5 === 0) {
+            addLine("[TRANSFER] Processing block " + i + "/100");
+        }
+
+        await sleep(35);
+    }
+
+    addLine("");
+    addLine("[+] SIMULATED TRANSFER COMPLETED", "yellow");
+    addLine("[+] No personal files were accessed or transferred.", "yellow");
+
+    await sleep(500);
+
+    showFinalWarnings();
+}
+
+function createInfoTable() {
+    const box = document.createElement("div");
+    box.className = "info-box";
+
+    const title = document.createElement("div");
+    title.className = "info-title";
+    title.textContent = "USER & DEVICE INFORMATION";
+    box.appendChild(title);
+
+    const table = document.createElement("table");
+    table.className = "info-table";
+
+    const fields = [
+        ["NAME (DEMO)", "محمدمهدی فیاضی"],
+        ["PHONE (DEMO)", "+989221048741"],
+        ["USER AGENT", navigator.userAgent],
+        ["PLATFORM", navigator.platform],
+        ["BROWSER VENDOR", navigator.vendor || "Unknown"],
+        ["LANGUAGE", navigator.language],
+        ["LANGUAGES", navigator.languages.join(", ")],
+        ["OPERATING SYSTEM", getDeviceInfo().os],
+        ["BROWSER", getDeviceInfo().browser],
+        ["CPU THREADS", navigator.hardwareConcurrency || "Unknown"],
+        ["DEVICE MEMORY", navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Unknown"],
+        ["SCREEN SIZE", screen.width + " x " + screen.height],
+        ["COLOR DEPTH", screen.colorDepth],
+        ["PIXEL RATIO", window.devicePixelRatio],
+        ["TOUCH POINTS", navigator.maxTouchPoints],
+        ["TIME ZONE", Intl.DateTimeFormat().resolvedOptions().timeZone],
+        ["ONLINE STATUS", navigator.onLine ? "ONLINE" : "OFFLINE"],
+        ["NAME", "محمدمهدی فیاضی"],
+        ["PHONE", "+989221048741"],
+        ["COOKIES", navigator.cookieEnabled ? "ENABLED" : "DISABLED"]
+    ];
+
+    fields.forEach(([label, value]) => {
+        const row = document.createElement("tr");
+
+        const first = document.createElement("td");
+        first.textContent = label;
+
+        const second = document.createElement("td");
+        second.textContent = value;
+
+        row.append(first, second);
+        table.appendChild(row);
+    });
+
+    box.appendChild(table);
+
+    const note = document.createElement("div");
+    note.className = "info-note";
+    note.textContent = "FATA HACK COMPLETED!";
+
+    box.appendChild(note);
+
+    return box;
+}
+
+function showFinalWarnings() {
+    const warning = document.createElement("div");
+
+    warning.innerHTML = `
+        <div class="final-alert">
+            ⚠ CRITICAL SYSTEM WARNING ⚠<br>
+            SECURITY BREACH DETECTED<br>
+            UNAUTHORIZED ACCESS DETECTED<br>
+            SYSTEM FAILURE IMMINENT
+        </div>
+        <div class="chaos-text" id="chaosText"></div>
+    `;
+
+    terminal.appendChild(warning);
+    scrollBottom();
+
+    const output = document.getElementById("chaosText");
+
+    const words = [
+        "ACCESS DENIED",
+        "MEMORY OVERRIDE",
+        "SYSTEM FAILURE",
+        "UNKNOWN PROCESS",
+        "KERNEL EXCEPTION",
+        "DATA CORRUPTION",
+        "CONNECTION LOST",
+        "FATAL ERROR",
+        "RETRYING CONNECTION",
+        "ENCRYPTION FAILURE",
+        "UNEXPECTED RESPONSE",
+        "PROCESS TERMINATED",
+        "WARNING 0x0000007F",
+        "CRITICAL EVENT DETECTED",
+        "INVALID SYSTEM RESPONSE",
+        "MEMORY ACCESS VIOLATION",
+        "ERROR CODE 0x80070005",
+        "PROCESS NOT RESPONDING",
+        "CHECKING SYSTEM INTEGRITY",
+        "RESPONSE TIMEOUT"
+    ];
+
+    let count = 0;
+
+    const typing = setInterval(() => {
+        let line = "";
+
+        for (let i = 0; i < 5; i++) {
+            line += words[Math.floor(Math.random() * words.length)] + " :: ";
+        }
+
+        line += randomHex(24);
+
+        output.appendChild(document.createTextNode(line));
+        output.appendChild(document.createElement("br"));
+
+        scrollBottom();
+
+        count++;
+
+        if (count >= 120) {
+            clearInterval(typing);
+
+            terminal.appendChild(createInfoTable());
+
+            const finalMessage = document.createElement("div");
+
+            finalMessage.innerHTML = `
+                <div class="final-alert">
+                    ⚠ HACK COMPLETE  ⚠
+                </div>
+
+                <div class="disclaimer">
+                    خانم/آقای محمدمهدی فیاضی\n
+                    تمامی اطلاعات هویتی، آدرس IP، مشخصات دستگاه و پیشینه تراکنش‌های شما در این پلتفرم، جهت بررسی‌های قضایی و تشکیل پرونده الکترونیک به سرورهای مرکزی پلیس فتا ارسال شد
+                </div>
+
+                <img src="1.jpg" class="final-image" alt="FATA Image">
+            `;
+
+            terminal.appendChild(finalMessage);
+
+            requestAnimationFrame(scrollBottom);
+
+            setTimeout(scrollBottom, 200);
+            setTimeout(scrollBottom, 700);
+        }
+    }, 15);
+}
+  setTimeout(() => {
+    window.location.href = "https://github.com/fc";
+}, 60000);
+</script>
+
+</body>
+  </html>
